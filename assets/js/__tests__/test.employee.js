@@ -1,4 +1,4 @@
-const Employee = require('../js/roles/Employee')
+const Employee = require("../roles/Employee")
 
 test('create employee obj', () => {
     const employee = new Employee('John', '1', 'john@gmail.com');
