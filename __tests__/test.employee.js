@@ -1,6 +1,6 @@
-const Employee = require("../roles/Employee")
+const Employee = require("../assets/js/roles/Employee")
 
-test('create employee obj', () => {
+test('create the employee obj', () => {
     const employee = new Employee('John', '1', 'john@gmail.com');
 
     expect(employee.name).toBe('John');
