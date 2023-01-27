@@ -5,12 +5,12 @@ const managerCard = (data) => {
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <div class="card-header bg-primary text-white">
-                    <h4 class="card-title">${data.managerName}</h4>
-                    <h5 class="card-subtitle mb-2">${data.managerJob}</h5>
+                    <h4 class="card-title">${data.name}</h4>
+                    <h5 class="card-subtitle mb-2">${data.job}</h5>
                     </div>
                     <p></p>
-                    <h6 class="card-text">ID: ${data.managerId}</h6>
-                    <h6 class="card-text">Email: <a href="mailto:${data.email}">${data.managerEmail}</a></h6>
+                    <h6 class="card-text">ID: ${data.id}</h6>
+                    <h6 class="card-text">Email: <a href="mailto:${data.email}">${data.email}</a></h6>
                     <h6 class="card-text">Office Number: ${data.officeNumber}</h6>
                 </div>
             </div>
@@ -26,12 +26,12 @@ const engineerCard = (data) => {
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <div class="card-header bg-primary text-white">
-                    <h4 class="card-title">${data.engineerName}</h4>
-                    <h5 class="card-subtitle mb-2">${data.engineerJob}</h5>
+                    <h4 class="card-title">${data.name}</h4>
+                    <h5 class="card-subtitle mb-2">${data.job}</h5>
                     </div>
                     <p></p>
-                    <h6 class="card-text">ID: ${data.engineerId}</h6>
-                    <h6 class="card-text">Email: <a href="mailto:${data.email}">${data.engineerEmail}</a></h6>
+                    <h6 class="card-text">ID: ${data.id}</h6>
+                    <h6 class="card-text">Email: <a href="mailto:${data.email}">${data.email}</a></h6>
                     <h6 class="card-text">GitHub: <a href="https://github.com/${data.github}"></a></h6>
                 </div>
             </div>
@@ -47,12 +47,12 @@ const internCard = (data) => {
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <div class="card-header bg-primary text-white">
-                    <h4 class="card-title">${data.internName}</h4>
-                    <h5 class="card-subtitle mb-2">${data.internJob}</h5>
+                    <h4 class="card-title">${data.name}</h4>
+                    <h5 class="card-subtitle mb-2">${data.job}</h5>
                     </div>
                     <p></p>
-                    <h6 class="card-text">ID: ${data.internId}</h6>
-                    <h6 class="card-text">Email: <a href="mailto:${data.email}">${data.internEmail}</a></h6>
+                    <h6 class="card-text">ID: ${data.id}</h6>
+                    <h6 class="card-text">Email: <a href="mailto:${data.email}">${data.email}</a></h6>
                     <h6 class="card-text">School: ${data.school}</h6>
                 </div>
             </div>
@@ -61,14 +61,14 @@ const internCard = (data) => {
 </section>`
 }
 
-const card = data => {
+const cards = data => {
     var createCard = '';
     for (i = 0; i < data.length; i++){
         if (data[i].getRole() === 'Manager'){
             createCard += managerCard(data[i])
         } else if (data[i].getRole() === 'Engineer'){
             createCard += engineerCard(data[i])
-        } else if (data[i].getRole() === 'Inter'){
+        } else if (data[i].getRole() === 'Intern'){
             createCard += internCard(data[i])
         }
     }

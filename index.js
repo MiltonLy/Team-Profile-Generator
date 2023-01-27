@@ -8,12 +8,12 @@ const template = require('./template/template')
 
 var employees = [];
 
-const managerCard = function () {
-    inquirer
+const managerInfo = function () {
+    return inquirer
         .prompt([
             {
                 message: "What is your name?",
-                name: 'managerName',
+                name: 'name',
             },
             {
                 type: 'list',
@@ -35,18 +35,20 @@ const managerCard = function () {
             }
         ])
         .then(managerData => {
-            const { managerName, managerJob, managerId, managerEmail, officeNumber } = managerData;
-            const manager = new Manager(managerName, managerJob, managerId, managerEmail, officeNumber);
+            const { name, managerJob, managerId, managerEmail, officeNumber } = managerData;
+            const manager = new Manager(name, managerJob, managerId, managerEmail, officeNumber);
             employees.push(manager);
+            console.log(managerData);
+            return managerData;
         })
 }
 
-const engineerCard = function () {
-    inquirer
+const engineerInfo = function () {
+     return inquirer
         .prompt([
             {
                 message: 'Who is your Engineer?',
-                name: 'enginerName',
+                name: 'engineerName',
             },
             {
                 type: 'list',
@@ -71,11 +73,13 @@ const engineerCard = function () {
             const { engineerName, engineerJob, engineerId, engineerEmail, githubUrl } = engineerData;
             const engineer = new Engineer(engineerName, engineerJob, engineerId, engineerEmail, githubUrl);
             employees.push(engineer)
+            console.log(engineer)
+            return engineerData;
         })
 }
 
-const internCard = function () {
-    inquirer
+const internInfo = function () {
+    return inquirer
         .prompt([
             {
                 message: 'Who is this?',
@@ -104,18 +108,35 @@ const internCard = function () {
             const { internName, internJob, internId, internEmail, school } = internData
             const intern = new Intern(internName, internJob, internId, internEmail, school);
             employees.push(intern);
+            
         })
 }
 
-managerCard()
-    .then(engineerCard)
-    .then(internCard)
+managerInfo()
+    .then(engineerInfo)
+    .then(internInfo)
     .then(data => {
-        const pageGenerator = template(data)
+        console.log(data)
+        const pageGenerator = template(employees)
 
         fs.writeFile('./index.html', pageGenerator, err => {
             if (err) {
-                throw err;
+                console.log(err);
+                return;
+            } else {
+                console.log('we did it!')
             }
         })
     })
+
+// console.log ("wow")
+//     // setTimeout(() => {
+//     //     console.log("Delayed for 1 second.");
+//     //   }, 1000)
+
+// //     function sleep(ms) {
+// //         return new Promise((resolve) => {
+// //           setTimeout(resolve, ms);
+// //         });
+// //       }
+// //  await sleep(1000)
