@@ -32,7 +32,7 @@ const engineerCard = (data) => {
                     <p></p>
                     <h6 class="card-text">ID: ${data.id}</h6>
                     <h6 class="card-text">Email: <a href="mailto:${data.email}">${data.email}</a></h6>
-                    <h6 class="card-text">GitHub: <a href="https://github.com/${data.github}"></a></h6>
+                    <h6 class="card-text">GitHub: <a href="https://github.com/${data.github}">https://github.com/${data.github}</a></h6>
                 </div>
             </div>
         </div>
